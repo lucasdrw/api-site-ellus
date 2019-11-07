@@ -10,7 +10,7 @@ module.exports = {
   },
 
   async store(req, res) {
-    const { nomePosto, data, prioridade, atendimento, situacao } = req.body; 
+    const { nomePosto, data, prioridade, atendimento, detalhes, situacao } = req.body; 
     const { user_id } = req.headers;
 
     const chamado = await Chamado.create({
@@ -19,6 +19,7 @@ module.exports = {
       data,
       prioridade,
       atendimento,
+      detalhes,
       situacao
     });
 
@@ -36,11 +37,11 @@ module.exports = {
   //metodo para atualizar o chamado
   async update(req, res) {
 
-    const {nomePosto , data, prioridade, atendimento, situacao } = req.body;
+    const {nomePosto , data, prioridade, atendimento, detalhes, situacao } = req.body;
 
     const atualizarChamado = await Chamado.findByIdAndUpdate(
       req.params.id,
-      { nomePosto, data, prioridade, atendimento, situacao},
+      { nomePosto, data, prioridade, atendimento, detalhes, situacao},
       { new: true});
 
     return res.json(atualizarChamado);

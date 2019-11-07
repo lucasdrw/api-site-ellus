@@ -6,6 +6,7 @@ const ChamadoSchema = new mongoose.Schema({
   data: String,
   prioridade: String,
   atendimento: String,
+  detalhes: String,
   situacao: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,

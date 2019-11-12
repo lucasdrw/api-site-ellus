@@ -3,8 +3,9 @@ const Chamado = require("../models/Chamado");
 module.exports = {
   async index(req, res) {
     const { page = 1 } = req.query;
+    const { sit } = req.query;
 
-    const chamados = await Chamado.paginate({}, {page, limit: 20, sort: {updatedAt: 'desc'}});
+    const chamados = await Chamado.paginate({situacao: sit}, {page, limit: 20, sort: {updatedAt: 'desc'}});
 
     return res.json(chamados);
   },

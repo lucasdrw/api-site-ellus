@@ -6,13 +6,16 @@ const ChamadoController = require("./controllers/ChamadoController");
 const routes = express.Router();
 
 routes.post("/sessions", SessionController.store);
+
 routes.post("/users", UserController.store);
+routes.get("/users/:id", UserController.show);
+routes.get("/users/:id/editar", UserController.update);
 
 routes.post("/chamados", ChamadoController.store);
 routes.get("/chamados", ChamadoController.index);
 routes.get("/chamados/:id", ChamadoController.show);
 routes.put("/chamados/:id/editar", ChamadoController.update);
-routes.delete("/chamados/:id", ChamadoController.delete); 
+routes.delete("/chamados/:id", ChamadoController.delete);
 
 
 module.exports = routes;

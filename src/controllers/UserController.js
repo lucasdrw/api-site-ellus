@@ -16,5 +16,23 @@ module.exports = {
     await User.create({ user, senha });
 
     return res.json({ user, senha });
+  },
+
+  async show(req, res){
+    const usuario = await User.findById(req.params.id);
+
+    return res.json(usuario);
+  }, 
+
+  async update(req, res){
+    const { user, senha} = req.body;
+
+    const atualizarUsuario = await User.findByIdAndUpdate(
+      req.params.id, 
+      {user, senha},
+      {new: true}
+    );
+
+    return res.json(atualizarUsuario);
   }
 };

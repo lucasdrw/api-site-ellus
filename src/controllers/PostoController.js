@@ -11,10 +11,10 @@ module.exports = {
     const { posto } = req.body;
 
     //verifica se ja tem um posto cadastrado com nome igual
-    const posto = await User.findOne({ posto });
+    const postov = await User.findOne({ posto });
 
     //se já tiver cadastrado
-    if (posto) {
+    if (postov) {
       return res.status(401).json({ error: "Já existe um posto cadastrado com esse nome" });
     }
 

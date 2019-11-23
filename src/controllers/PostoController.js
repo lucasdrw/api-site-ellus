@@ -7,11 +7,11 @@ module.exports = {
         return res.json(postos);
     },
   
-    async store(req, res) {
+    async store(req, res) { 
     const { posto } = req.body;
 
     //verifica se ja tem um posto cadastrado com nome igual
-    const postov = await User.findOne({ posto });
+    const postov = await Posto.findOne({ posto });
 
     //se já tiver cadastrado
     if (postov) {

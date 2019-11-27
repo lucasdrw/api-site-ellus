@@ -20,5 +20,6 @@ routes.delete("/chamados/:id", ChamadoController.delete);
 
 routes.post("/postos", PostoController.store);
 routes.get("/postos", PostoController.index);
+routes.delete("/postos/:id", PostoController.delete);
 
 module.exports = routes;

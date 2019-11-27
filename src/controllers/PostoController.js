@@ -24,20 +24,11 @@ module.exports = {
     return res.json({ posto });
   },
 
-  //async show(req, res){
-  //  const usuario = await User.findById(req.params.id);
-  //  return res.json(usuario);
-  //}, 
+  async delete(req, res){
+    await Posto.findByIdAndRemove(req.params.id);
 
-  /*async update(req, res){
-    const { user, senha} = req.body;
-
-    const atualizarUsuario = await User.findByIdAndUpdate(
-      req.params.id, 
-      {user, senha},
-      {new: true}
-    );
-
-    return res.json(atualizarUsuario);
-  } */
+    return res.status(200).send({
+      message: 'Registro excluido com sucesso!'
+    });
+  }
 };

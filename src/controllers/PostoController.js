@@ -2,7 +2,7 @@ const Posto = require("../models/Posto");
 
 module.exports = {
     async index(req, res) {
-        const postos = await Posto.find({});
+        const postos = await Posto.paginate({}, {limit: 200, sort: {posto: 'ascending'}});
     
         return res.json(postos);
     },
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   async delete(req, res){
-    await Posto.findByIdAndRemove(req.params.id);
+    await Posto.findByIdAndRemove(req.params.id); 
 
     return res.status(200).send({
       message: 'Registro excluido com sucesso!'
